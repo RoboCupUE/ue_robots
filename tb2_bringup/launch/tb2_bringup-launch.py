@@ -34,13 +34,8 @@ def generate_launch_description():
     ld.add_action(kobuki_launch)
 
     kobuki_description = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([
-            PathJoinSubstitution([
-                FindPackageShare('tb2_bringup'),
-                'launch',
-                'robot_description.launch.py'
-            ])
-        ])
+        PythonLaunchDescriptionSource(os.path.join(package_dir,
+                                        'launch', 'robot_description.launch.py'))
     )
 
     ld.add_action(kobuki_description)
